@@ -1,11 +1,17 @@
 <?php
 include "funciones.php";
-include "help";
+include "help.php";
 $patata=true;
 if (PHP_SAPI !== 'cli') {
   
   return False;
 }
+try {
+  iniciar_sesion();
+} catch (\Throwable $th) {
+  echo("hay un error con el inicio de sesion");
+}
+
 echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
 while ($patata) {
   echo "**Gestor de Tareas**\n";
