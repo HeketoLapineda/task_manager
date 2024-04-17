@@ -22,7 +22,7 @@ while ($patata) {
     case 1:
       $titulo = readline("Introduzca el titulo de la tarea: ");
       $descripcion = readline("Introduzca la descripcion de la tarea: ");
-      $prioridad = readline("Introduzca la prioridad de la tarea (1-5): ");
+      $prioridad = readline("Introduzca la prioridad de la tarea (0-5): ");
 
       crearTarea($titulo, $descripcion, $prioridad);
 
@@ -46,12 +46,13 @@ while ($patata) {
       break;
 
     case 3:
+      $a=TRUE;
+
       $id = readline("Introduzca el ID de la tarea a actualizar: ");
       $titulo = readline("Introduzca el nuevo titulo de la tarea: ");
       $descripcion = readline("Introduzca la nueva descripcion de la tarea: ");
-      $prioridad = readline("Introduzca la nueva prioridad de la tarea (1-5): ");
-      $estado = readline("Introduzca el nuevo estado de la tarea (pendiente/completada): ");
-
+      $prioridad = readline("Introduzca la nueva prioridad de la tarea (0-5): ");
+      $estado = readline("Introduzca el nuevo estado de la tarea (pendiente/completada): ");  
       actualizarTarea($id, $titulo, $descripcion, $prioridad, $estado);
 
       echo "Tarea actualizada correctamente.\n";
