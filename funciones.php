@@ -6,29 +6,6 @@ $db_password = "cuervo2005";
 $db_name = "TaskManager";
 
 function iniciar_sesion(){
-  try {
-    $options = getopt("u:p:h");
-    if (isset($options['h'])) {
-      mostrarAyuda();
-      exit();
-    }
-    if (!isset($options['u']) || !isset($options['p'])) {
-      echo "Por favor, especifique tanto el nombre de usuario como la contraseña.\n";
-      mostrarAyuda();
-      exit(1);
-    }
-
-    $usuario = $options['u'];
-    $contraseña = $options['p'];
-
-    echo "Nombre de usuario: $usuario\n";
-    echo "Contraseña: $contraseña\n";
-
-  } catch (\Throwable $th) {
-    mostrarAyuda();
-  }
-  
-}
 try{
   $conexion = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 } catch(exception){
