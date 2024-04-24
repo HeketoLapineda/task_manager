@@ -12,7 +12,7 @@ try{
   echo "Error al conectar a la base de datos: " . mysqli_connect_error();
   exit;
 }
-
+}
 function crearTarea($titulo, $descripcion, $prioridad) {
   global $conexion;
 

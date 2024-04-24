@@ -5,4 +5,5 @@ function mostrarAyuda() {
     echo "-p <contraseña>: Especifica la contraseña\n";
     echo "-h: Muestra esta ayuda\n";
 }
+mostrarAyuda()
 ?>
