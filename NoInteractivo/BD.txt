@@ -1,0 +1,12 @@
+#crear usuario y darle permisos
+CREATE USER 'heketo'@'localhost' IDENTIFIED BY 'cuervo2005';
+GRANT ALL PRIVILEGES ON *.* TO 'heketo'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+#crear base de datos
+CREATE DATABASE TaskManager;
+
+#crear tabla principal
+CREATE TABLE tareas (id INT PRIMARY KEY auto_increment, titulo VARCHAR(10), descripcion VARCHAR(100),prioridad int, estado varchar(50) default(”pendiente”) ,fecha_creacion date); 
+
