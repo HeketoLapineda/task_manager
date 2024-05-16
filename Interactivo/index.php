@@ -1,19 +1,26 @@
 <?php
 include "funciones.php";
-include "help.php";
-$patata=true;
+$patataBucle=true;
 if (PHP_SAPI !== 'cli') {
   
-  return False;
+  exit;
 }
 try {
   iniciar_sesion();
-} catch (\Throwable $th) {
-  echo("hay un error con el inicio de sesion");
+} catch (Exception $e) {
+  echo "hay un error con el inicio de sesion: " . $e->getMessage();
+  exit;
 }
-
-echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
-while ($patata) {
+function Clean(){
+  if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN') {
+    system('clear');
+  }
+  else {
+    system('cls');
+  }
+}
+Clean();
+while ($patataBucle) {
   echo "**Gestor de Tareas**\n";
   echo "--------------------\n";
   echo "1. Crear tarea\n";
@@ -34,25 +41,27 @@ while ($patata) {
 
       echo "Tarea creada correctamente.\n";
       sleep(3);
-      echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
+      Clean();
       break;
 
     case 2:
       $tareas = obtenerTareas();
 
-      foreach ($tareas as $tarea) {
-        echo "ID: " . $tarea["id"] . "\n";
-        echo "Titulo: " . $tarea["titulo"] . "\n";
-        echo "Descripcion: " . $tarea["descripcion"] . "\n";
-        echo "Prioridad: " . $tarea["prioridad"] . "\n";
-        echo "Estado: " . $tarea["estado"] . "\n";
-        echo "\n";
-      }
-
-      break;
+      if (empty($tareas)) {
+                echo "No hay tareas disponibles.\n";
+            } else {
+                foreach ($tareas as $tarea) {
+                    echo "ID: " . $tarea["id"] . "\n";
+                    echo "Titulo: " . $tarea["titulo"] . "\n";
+                    echo "Descripcion: " . $tarea["descripcion"] . "\n";
+                    echo "Prioridad: " . $tarea["prioridad"] . "\n";
+                    echo "Estado: " . $tarea["estado"] . "\n";
+                    echo "\n";
+                }
+            }
+            break;
 
     case 3:
-      $a=TRUE;
 
       $id = readline("Introduzca el ID de la tarea a actualizar: ");
       $titulo = readline("Introduzca el nuevo titulo de la tarea: ");
@@ -63,8 +72,7 @@ while ($patata) {
 
       echo "Tarea actualizada correctamente.\n";
       sleep(3);
-      echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
-
+      Clean();
       break;
 
     case 4:
@@ -74,13 +82,12 @@ while ($patata) {
 
       echo "Tarea eliminada correctamente.\n";
       sleep(3);
-      echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
-
+      Clean();
       break;
 
     case 5:
-      $patata=False;
-      echo chr(27).chr(91).'H'.chr(27).chr(91).'J';
+      $patataBucle=False;
+      Clean();
       exit;
     default:
       echo "Opcion no valida.\n";
