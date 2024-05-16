@@ -71,8 +71,7 @@ function eliminarTareaSQL($id) {
 }
 function crearTareaJSON($titulo, $descripcion, $prioridad) {
     $tareas = obtenerTareasJSON();
-    $id = uniqid(); // Genera un ID único para la tarea
-
+    $id = uniqid();
     $nuevaTarea = [
         "id" => $id,
         "titulo" => $titulo,
