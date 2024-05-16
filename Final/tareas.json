@@ -1,0 +1,16 @@
+{
+    "1": {
+        "id": "664630d987557",
+        "titulo": "Preparar informe",
+        "descripcion": "Revisar datos y elaborar informe mensual",
+        "prioridad": 2,
+        "estado": "pendiente"
+    },
+    "2": {
+        "id": "6646394d73ba9",
+        "titulo": "cosa",
+        "descripcion": "hacer algo",
+        "prioridad": "0",
+        "estado": "pendiente"
+    }
+}
